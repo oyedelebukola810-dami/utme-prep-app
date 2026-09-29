@@ -1,0 +1,57 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Sizes */
+.badge-sm {
+  padding: 3px 8px;
+  font-size: 11px;
+}
+
+.badge-md {
+  padding: 4px 12px;
+  font-size: var(--text-xs);
+}
+
+/* Variants */
+.badge-indigo {
+  background-color: rgba(41, 35, 92, 0.1);
+  color: var(--color-deep-indigo);
+}
+
+.badge-emerald {
+  background-color: rgba(34, 160, 107, 0.12);
+  color: var(--color-emerald);
+}
+
+.badge-amber {
+  background-color: rgba(255, 184, 77, 0.18);
+  color: #9E6100;
+}
+
+.badge-coral {
+  background-color: rgba(232, 93, 93, 0.12);
+  color: var(--color-coral-red);
+}
+
+.badge-lime {
+  background-color: var(--color-electric-lime);
+  color: var(--color-midnight);
+}
+
+.badge-slate {
+  background-color: #EFEFEA;
+  color: var(--color-slate);
+}
+
+.badge-icon {
+  display: inline-flex;
+  align-items: center;
+}

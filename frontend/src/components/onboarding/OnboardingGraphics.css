@@ -1,0 +1,316 @@
+.graphic-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-2) 0;
+}
+
+.mock-card {
+  width: 100%;
+  max-width: 340px;
+  background-color: var(--color-midnight);
+  border: 1px solid var(--color-deep-indigo);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  color: var(--color-white);
+  box-shadow: 0 12px 32px rgba(23, 21, 54, 0.25);
+}
+
+/* Welcome Graphic */
+.mock-badge {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-midnight);
+  background-color: var(--color-electric-lime);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-3);
+}
+
+.mock-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.mock-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.mock-tag {
+  font-size: var(--text-xs);
+  color: var(--color-emerald);
+}
+
+.mock-stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgba(41, 35, 92, 0.4);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+}
+
+.mock-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-num {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-electric-lime);
+}
+
+.stat-lbl {
+  font-size: 11px;
+  color: var(--color-slate);
+}
+
+.mock-stat-divider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--color-deep-indigo);
+}
+
+/* Practice Graphic */
+.mock-question-tag {
+  font-size: 11px;
+  color: var(--color-electric-lime);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.mock-question-body {
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  margin-bottom: var(--space-3);
+  color: var(--color-soft-ivory);
+}
+
+.mock-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-3);
+}
+
+.mock-option {
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--color-slate);
+}
+
+.mock-option.selected-correct {
+  background-color: rgba(34, 160, 107, 0.18);
+  border: 1px solid var(--color-emerald);
+  color: var(--color-white);
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+}
+
+.check-icon {
+  color: var(--color-emerald);
+  font-weight: 800;
+}
+
+.mock-explanation-box {
+  background-color: rgba(41, 35, 92, 0.5);
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.explanation-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-electric-lime);
+  text-transform: uppercase;
+}
+
+.explanation-text {
+  font-size: 11px;
+  color: var(--color-soft-ivory);
+}
+
+/* CBT Graphic */
+.mock-cbt-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.cbt-status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-emerald);
+  border-radius: 50%;
+}
+
+.cbt-exam-name {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.cbt-timer-badge {
+  font-size: 11px;
+  font-family: var(--font-heading);
+  color: var(--color-warm-amber);
+  background-color: rgba(255, 184, 77, 0.15);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.mock-subject-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: var(--space-3);
+  overflow-x: auto;
+}
+
+.tab-pill {
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--color-slate);
+  white-space: nowrap;
+}
+
+.tab-pill.active {
+  background-color: var(--color-deep-indigo);
+  color: var(--color-electric-lime);
+  font-weight: 700;
+}
+
+.mock-palette-label {
+  font-size: 11px;
+  color: var(--color-slate);
+  margin-bottom: 6px;
+}
+
+.mock-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+}
+
+.palette-num {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 600;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.palette-num.answered {
+  background-color: var(--color-emerald);
+  color: var(--color-white);
+}
+
+.palette-num.current {
+  background-color: var(--color-electric-lime);
+  color: var(--color-midnight);
+  font-weight: 800;
+}
+
+.palette-num.unanswered {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-slate);
+}
+
+/* Analytics Graphic */
+.mock-analytics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-4);
+}
+
+.analytics-subtitle {
+  font-size: 11px;
+  color: var(--color-slate);
+}
+
+.score-display {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-electric-lime);
+  line-height: 1;
+  margin-top: 4px;
+}
+
+.max-score {
+  font-size: var(--text-xs);
+  color: var(--color-slate);
+  font-weight: normal;
+}
+
+.target-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-emerald);
+  background-color: rgba(34, 160, 107, 0.15);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+.mock-subject-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.bar-label {
+  width: 50px;
+  color: var(--color-soft-ivory);
+}
+
+.bar-track {
+  flex: 1;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background-color: var(--color-electric-lime);
+  border-radius: var(--radius-full);
+}
+
+.bar-val {
+  width: 28px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-electric-lime);
+  text-align: right;
+}

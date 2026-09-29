@@ -1,0 +1,18 @@
+{
+  "short_name": "UTME Prep",
+  "name": "UTME Prep & CBT Practice",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512 192x192 64x64 32x32",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#171536",
+  "theme_color": "#29235C",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "description": "High-performance JAMB UTME preparation and CBT practice application."
+}

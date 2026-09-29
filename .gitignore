@@ -1,0 +1,37 @@
+# Environment files (NEVER commit secrets!)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+!.env.example
+
+# Node / Frontend Build Outputs
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Python / Backend Outputs
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+dev_emails.log
+
+# IDE & OS Generated Files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
