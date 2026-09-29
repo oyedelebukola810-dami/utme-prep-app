@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Key, User, ArrowRight, ShieldCheck, ShieldAlert, CheckCircle2, RefreshCw, Eye, EyeOff, ArrowLeft } from 'lucide-react';
+import { Mail, Key, User, ArrowRight, ShieldCheck, ShieldAlert, CheckCircle2, RefreshCw, Eye, EyeOff } from 'lucide-react';
 import { Button } from '../common/Button/Button';
 import { Badge } from '../common/Badge/Badge';
+import { apiRequest } from '../../services/apiClient';
 import './AuthEntryScreen.css';
 
 export const AuthEntryScreen = ({ onCompleteGuest }) => {
@@ -18,7 +19,6 @@ export const AuthEntryScreen = ({ onCompleteGuest }) => {
   const [loading, setLoading] = useState(false);
   const [resendCooldown, setResendCooldown] = useState(0);
 
-  // Resend cooldown timer countdown
   useEffect(() => {
     if (resendCooldown > 0) {
       const timer = setTimeout(() => setResendCooldown((prev) => prev - 1), 1000);
@@ -33,9 +33,8 @@ export const AuthEntryScreen = ({ onCompleteGuest }) => {
     setErrorMessage(null);
 
     try {
-      const res = await fetch('/api/v1/auth/register', {
+      const data = await apiRequest('/api/v1/auth/register', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email,
           password,
@@ -43,11 +42,6 @@ export const AuthEntryScreen = ({ onCompleteGuest }) => {
           target_score: Number(targetScore)
         })
       });
-
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.detail || 'Registration failed.');
-      }
 
       setStatusMessage(data.message);
       setAuthView('verify');
@@ -66,16 +60,10 @@ export const AuthEntryScreen = ({ onCompleteGuest }) => {
     setErrorMessage(null);
 
     try {
-      const res = await fetch('/api/v1/auth/verify-email', {
+      const data = await apiRequest('/api/v1/auth/verify-email', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token: verificationTokenInput })
       });
-
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.detail || 'Verification failed.');
-      }
 
       setStatusMessage('Email address verified successfully. You may now sign in.');
       setAuthView('login');
@@ -93,16 +81,10 @@ export const AuthEntryScreen = ({ onCompleteGuest }) => {
     setErrorMessage(null);
 
     try {
-      const res = await fetch('/api/v1/auth/resend-verification', {
+      const data = await apiRequest('/api/v1/auth/resend-verification', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })
       });
-
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.detail || 'Resend request failed.');
-      }
 
       setStatusMessage(data.message);
       setResendCooldown(60);
@@ -120,24 +102,17 @@ export const AuthEntryScreen = ({ onCompleteGuest }) => {
     setErrorMessage(null);
 
     try {
-      const res = await fetch('/api/v1/auth/login', {
+      const data = await apiRequest('/api/v1/auth/login', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, full_name: 'Candidate' })
       });
-
-      const data = await res.json();
-      if (!res.ok) {
-        if (res.status === 403) {
-          setAuthView('verify');
-          throw new Error(data.detail);
-        }
-        throw new Error(data.detail || 'Invalid email or password.');
-      }
 
       const userData = { email, name: fullName || 'Candidate', is_verified: true, token: data.access_token };
       onCompleteGuest && onCompleteGuest(userData);
     } catch (err) {
+      if (err.status === 403) {
+        setAuthView('verify');
+      }
       setErrorMessage(err.message);
     } finally {
       setLoading(false);
@@ -151,16 +126,10 @@ export const AuthEntryScreen = ({ onCompleteGuest }) => {
     setErrorMessage(null);
 
     try {
-      const res = await fetch('/api/v1/auth/forgot-password', {
+      const data = await apiRequest('/api/v1/auth/forgot-password', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })
       });
-
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.detail || 'Reset request failed.');
-      }
 
       setStatusMessage(data.message);
     } catch (err) {
