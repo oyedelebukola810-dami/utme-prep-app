@@ -14,6 +14,7 @@ class UserResponse(UserBase):
     id: int
     is_active: bool
     is_verified: bool
+    is_admin: bool = False
     cbt_timer_mode: Optional[str] = "120"
     auto_show_solutions: Optional[bool] = True
     notifications_enabled: Optional[bool] = True
@@ -26,6 +27,8 @@ class Token(BaseModel):
     access_token: str
     token_type: str = "bearer"
     is_verified: bool
+    is_admin: bool = False
+    user: Optional[UserResponse] = None
 
 class VerifyEmailRequest(BaseModel):
     token: str

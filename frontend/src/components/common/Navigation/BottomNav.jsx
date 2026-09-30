@@ -1,19 +1,21 @@
 import React from 'react';
-import { Home, BookOpen, Timer, BarChart3, User } from 'lucide-react';
+import { Home, BookOpen, Timer, BarChart3, User, ShieldCheck } from 'lucide-react';
 import './Navigation.css';
 
-/**
- * Responsive Navigation Component
- * Modern 2026 bottom tab bar for mobile, adapting seamlessly on desktop
- */
-export const BottomNav = ({ activeTab = 'home', onTabChange }) => {
-  const tabs = [
+export const BottomNav = ({ activeTab = 'home', onTabChange, user }) => {
+  const baseTabs = [
     { id: 'home', label: 'Home', icon: Home },
     { id: 'practice', label: 'Practice', icon: BookOpen },
     { id: 'cbt', label: 'UTME Exam', icon: Timer },
     { id: 'analytics', label: 'Analytics', icon: BarChart3 },
     { id: 'profile', label: 'Profile', icon: User },
   ];
+
+  if (user?.is_admin || activeTab === 'admin') {
+    baseTabs.splice(3, 0, { id: 'admin', label: 'Admin', icon: ShieldCheck });
+  }
+
+  const tabs = baseTabs;
 
   return (
     <nav className="bottom-nav-bar">

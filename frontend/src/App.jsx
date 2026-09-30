@@ -7,6 +7,7 @@ import { Button } from './components/common/Button/Button';
 import { Badge } from './components/common/Badge/Badge';
 import { OnboardingFlow } from './components/onboarding/OnboardingFlow';
 import { SettingsView } from './components/settings/SettingsView';
+import { AdminDashboard } from './components/admin/AdminDashboard';
 import { AuthProvider } from './context/AuthContext';
 import './App.css';
 
@@ -54,6 +55,7 @@ function MainAppShell() {
         onReplayTour={handleReplayOnboarding}
         onLogout={handleLogout}
         onOpenAuth={() => setShowOnboarding(true)}
+        onOpenAdmin={() => setActiveTab('admin')}
       />
 
       <div className="app-shell-body">
@@ -110,6 +112,12 @@ function MainAppShell() {
                   </Card>
                 ))}
               </div>
+            </div>
+          )}
+
+          {activeTab === 'admin' && (
+            <div className="tab-view">
+              <AdminDashboard user={user} />
             </div>
           )}
 
@@ -186,7 +194,7 @@ function MainAppShell() {
         </main>
       </div>
 
-      <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
+      <BottomNav activeTab={activeTab} onTabChange={setActiveTab} user={user} />
     </div>
   );
 }

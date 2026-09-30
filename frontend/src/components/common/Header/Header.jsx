@@ -6,7 +6,7 @@ import './Header.css';
  * Responsive Header Component
  * Spans full viewport width with inner container aligned to max content width.
  */
-export const Header = ({ user, onReplayTour, onLogout, onOpenAuth }) => {
+export const Header = ({ user, onReplayTour, onLogout, onOpenAuth, onOpenAdmin }) => {
   return (
     <header className="app-header-bar">
       <div className="header-inner">
@@ -27,7 +27,16 @@ export const Header = ({ user, onReplayTour, onLogout, onOpenAuth }) => {
           {user ? (
             <div className="user-profile-header">
               <span className="user-email">{user.email}</span>
-              {user.is_verified ? (
+              {user.is_admin ? (
+                <button
+                  type="button"
+                  className="admin-portal-badge-btn"
+                  onClick={onOpenAdmin}
+                  title="Open Admin Management Portal"
+                >
+                  <ShieldCheck size={14} /> Admin Portal
+                </button>
+              ) : user.is_verified ? (
                 <span className="verification-status verified" title="Email Verified">
                   <ShieldCheck size={14} /> Verified
                 </span>

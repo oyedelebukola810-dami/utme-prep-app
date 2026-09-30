@@ -17,8 +17,15 @@ class TestUTMEAuthAndSystem(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         init_db()
-        cls.test_email = "delivered@resend.dev"
+        cls.test_email = f"candidate_test_{int(datetime.now(timezone.utc).timestamp())}@utmeprep.ng"
         cls.test_password = "SecureCandidatePassword2026!"
+
+    @classmethod
+    def tearDownClass(cls):
+        db = SessionLocal()
+        db.query(User).filter(User.email == cls.test_email).delete()
+        db.commit()
+        db.close()
 
     def setUp(self):
         self.db = SessionLocal()
@@ -52,7 +59,7 @@ class TestUTMEAuthAndSystem(unittest.TestCase):
 
     def test_03_email_dispatch_service(self):
         token = generate_secure_token()
-        success, status_code, msg = dispatch_verification_email(self.test_email, token)
+        success, status_code, msg = dispatch_verification_email("delivered@resend.dev", token)
         self.assertTrue(success)
         self.assertIn(status_code, ["DELIVERED_VIA_SMTP", "LOCAL_DEV_STREAM"])
 

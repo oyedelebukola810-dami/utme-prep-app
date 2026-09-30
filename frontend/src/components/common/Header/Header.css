@@ -117,6 +117,27 @@
   color: var(--color-warm-amber);
 }
 
+.admin-portal-badge-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: rgba(199, 243, 107, 0.15);
+  color: var(--color-electric-lime);
+  border: 1px solid rgba(199, 243, 107, 0.4);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.admin-portal-badge-btn:hover {
+  background-color: var(--color-electric-lime);
+  color: var(--color-midnight);
+}
+
 .header-icon-btn {
   color: var(--color-slate);
   display: inline-flex;

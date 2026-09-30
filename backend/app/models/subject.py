@@ -11,6 +11,7 @@ class Subject(Base):
     description = Column(Text, nullable=True)
 
     topics = relationship("Topic", back_populates="subject", cascade="all, delete-orphan")
+    questions = relationship("Question", back_populates="subject", cascade="all, delete-orphan")
 
 class Topic(Base):
     __tablename__ = "topics"
@@ -21,3 +22,5 @@ class Topic(Base):
     description = Column(Text, nullable=True)
 
     subject = relationship("Subject", back_populates="topics")
+    questions = relationship("Question", back_populates="topic")
+
