@@ -1,10 +1,24 @@
-# Environment files (NEVER commit secrets!)
+# Environment files (NEVER commit secrets or production credentials!)
 .env
 .env.local
+.env.development
 .env.development.local
+.env.test
 .env.test.local
+.env.production
 .env.production.local
 !.env.example
+
+# Local Database & SQLite Files
+*.db
+*.sqlite
+*.sqlite3
+backend/utme_local.db
+utme_local.db
+
+# Development Email Logs & Temp Files
+dev_emails.log
+*.log
 
 # Node / Frontend Build Outputs
 node_modules/
@@ -12,7 +26,7 @@ dist/
 dist-ssr/
 *.local
 
-# Python / Backend Outputs
+# Python / Backend Runtime Cache
 __pycache__/
 *.pyc
 *.pyo
@@ -20,12 +34,12 @@ __pycache__/
 .Python
 env/
 venv/
+.venv/
 ENV/
 env.bak/
 venv.bak/
-dev_emails.log
 
-# IDE & OS Generated Files
+# IDE & System Files
 .vscode/
 .idea/
 *.suo

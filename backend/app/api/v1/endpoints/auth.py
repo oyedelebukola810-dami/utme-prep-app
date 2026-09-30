@@ -6,13 +6,12 @@ from fastapi import APIRouter, HTTPException, status, Depends
 from sqlalchemy.orm import Session
 
 from app.core.config import settings
-from app.core.email import dispatch_verification_email
+from app.core.email import dispatch_verification_email, dispatch_password_reset_email
 from app.core.security import (
     get_password_hash,
     verify_password,
     generate_secure_token,
-    create_access_token,
-    decode_access_token
+    create_access_token
 )
 from app.db.session import get_db
 from app.models.user import User
@@ -163,8 +162,7 @@ def login_user(user_in: UserCreate, db: Session = Depends(get_db)):
 
 @router.post("/settings", response_model=Dict[str, Any])
 def update_user_settings(payload: UpdateUserSettingsRequest, db: Session = Depends(get_db)):
-    # Database persistence endpoint for updating candidate settings
-    user = db.query(User).first() # Returns active session user
+    user = db.query(User).first()
     if not user:
         raise HTTPException(status_code=404, detail="Candidate user record not found.")
         
@@ -219,7 +217,9 @@ def forgot_password(payload: ForgotPasswordRequest, db: Session = Depends(get_db
         user.password_reset_token = reset_token
         user.password_reset_expires_at = datetime.utcnow() + timedelta(hours=settings.PASSWORD_RESET_TOKEN_EXPIRE_HOURS)
         db.commit()
-        logger.info(f"[AUTH SECURITY] Persistent password reset token generated for {normalized_email}")
+        
+        dispatch_password_reset_email(normalized_email, reset_token)
+        logger.info(f"[AUTH SECURITY] Password reset email dispatched for {normalized_email.split('@')[0]}***@{normalized_email.split('@')[-1]}")
         
     return {"message": generic_msg}
 
