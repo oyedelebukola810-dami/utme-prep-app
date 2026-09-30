@@ -17,7 +17,7 @@ class TestUTMEAuthAndSystem(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         init_db()
-        cls.test_email = f"test_candidate_{int(datetime.now(timezone.utc).timestamp())}@utmeprep.ng"
+        cls.test_email = "delivered@resend.dev"
         cls.test_password = "SecureCandidatePassword2026!"
 
     def setUp(self):
